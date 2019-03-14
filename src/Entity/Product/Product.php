@@ -15,6 +15,29 @@ use Sylius\Component\Product\Model\ProductTranslationInterface;
  */
 class Product extends BaseProduct
 {
+
+    /**
+     * @return string|null
+     */
+    public function getColor(): ?string
+    {
+        return $this->getTranslation()->getColor();
+    }
+
+    /**
+     * @param string $color
+     * @return Product
+     */
+    public function setProductColor(string $color): self
+    {
+        $this->getTranslation()->setColor($color);
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     protected function createTranslation(): ProductTranslationInterface
     {
         return new ProductTranslation();

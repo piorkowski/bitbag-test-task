@@ -149,6 +149,7 @@ sylius_product:
             translation:
                 classes:
                     model: App\Entity\Product\ProductTranslation
+                    form: App\Form\Extension\ProductTranslationTypeExtension
         product_variant:
             classes:
                 model: App\Entity\Product\ProductVariant
