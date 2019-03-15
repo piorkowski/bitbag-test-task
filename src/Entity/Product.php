@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Entity\Product;
+namespace App\Entity;
 
 use Doctrine\ORM\Mapping\MappedSuperclass;
 use Doctrine\ORM\Mapping\Table;
@@ -16,9 +16,7 @@ use Sylius\Component\Product\Model\ProductTranslationInterface;
 class Product extends BaseProduct
 {
 
-    /**
-     * @return string|null
-     */
+    /** @return string|null */
     public function getColor(): ?string
     {
         return $this->getTranslation()->getColor();
@@ -26,6 +24,7 @@ class Product extends BaseProduct
 
     /**
      * @param string $color
+     *
      * @return Product
      */
     public function setProductColor(string $color): self
@@ -35,9 +34,7 @@ class Product extends BaseProduct
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     protected function createTranslation(): ProductTranslationInterface
     {
         return new ProductTranslation();

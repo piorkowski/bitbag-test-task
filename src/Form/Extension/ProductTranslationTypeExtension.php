@@ -10,9 +10,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 final class ProductTranslationTypeExtension extends AbstractTypeExtension
 {
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->add('color', ChoiceType::class, [
@@ -26,9 +24,7 @@ final class ProductTranslationTypeExtension extends AbstractTypeExtension
         ]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritdoc} */
     public static function getExtendedTypes(): iterable
     {
         return [ProductTranslationType::class];

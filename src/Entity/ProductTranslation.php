@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Entity\Product;
+namespace App\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\MappedSuperclass;
 use Doctrine\ORM\Mapping\Table;
 use Sylius\Component\Core\Model\ProductTranslation as BaseProductTranslation;
 
 /**
- * @ORM\Entity()
+ * @MappedSuperclass
  * @Table(name="sylius_product_translation")
  */
 class ProductTranslation extends BaseProductTranslation
@@ -18,15 +18,10 @@ class ProductTranslation extends BaseProductTranslation
     public const PRODUCT_COLOR_GREEN = 'sylius.product.color.green';
     public const PRODUCT_COLOR_RED = 'sylius.product.color.red';
 
-    /**
-     * @ORM\Column(name="color", type="string", length=255, nullable=true)
-     * @var string
-     */
+    /** @var string */
     protected $color;
 
-    /**
-     * @return string|null
-     */
+    /** @return string|null */
     public function getColor(): ?string
     {
         return $this->color;
@@ -34,10 +29,14 @@ class ProductTranslation extends BaseProductTranslation
 
     /**
      * @param string $color
+     *
+     * @return ProductTranslation
      */
-    public function setColor(string $color): void
+    public function setColor(string $color): self
     {
         $this->color = $color;
+
+        return $this;
     }
 
 }
